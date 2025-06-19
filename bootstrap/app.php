@@ -3,6 +3,10 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Spatie\Permission\Exceptions\UnauthorizedException;
+use Illuminate\Http\JsonResponse;
+use App\Http\Resources\ErrorResource;
+use Illuminate\Auth\AuthenticationException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -12,8 +16,24 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+            'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (UnauthorizedException $exception): JsonResponse {
+            return (new ErrorResource(['message' => $exception->getMessage()]))
+                ->response()
+                ->setStatusCode(403);
+            // return response()->json(['message' => 'Unauthorized'], 403);
+        });
+
+        $exceptions->render(function (AuthenticationException $exception): JsonResponse {
+            return (new ErrorResource(['message' => $exception->getMessage()]))
+                ->response()
+                ->setStatusCode(401);
+            // return response()->json(['message' => 'Unauthenticated'], 401);
+        });
     })->create();
