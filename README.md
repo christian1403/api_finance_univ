@@ -11,7 +11,7 @@
 
 ## 📋 Overview
 
-**API Payment Gateway Finance University** adalah platform inovatif yang menghubungkan sistem keuangan universitas dengan berbagai metode pembayaran digital. Proyek ini dibangun dengan Laravel, menyediakan solusi yang aman, skalabel, dan mudah terintegrasi untuk pengelolaan transaksi keuangan akademik.
+**API Payment Gateway Finance University** adalah RESTful API, platform inovatif yang menghubungkan sistem keuangan universitas dengan berbagai metode pembayaran digital. Proyek ini dibangun dengan Laravel, menyediakan solusi yang aman, skalabel, dan mudah terintegrasi untuk pengelolaan transaksi keuangan akademik.
 
 ## ✨ Features
 
@@ -19,6 +19,15 @@
 - **Keamanan Berlapis**: Enkripsi end-to-end dan kepatuhan terhadap standar signature payment gateway
 - **Webhook & Notifikasi**: Sistem notifikasi otomatis untuk status pembayaran secara real-time
 - **Pembayaran Rekuren**: Untuk biaya kuliah baik BPP maupun Non BPP
+
+## 🛠️ Prerequisites
+
+### System Requirements
+
+- **PHP 8.1 or higher**
+- **Laravel 12.x**
+- **MySQL 8.0+**
+- **Composer 2.x**
 
 ## 🚀 Installation
 
