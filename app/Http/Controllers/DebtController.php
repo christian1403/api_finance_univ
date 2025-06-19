@@ -13,7 +13,7 @@ class DebtController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : DebtCollection
     {
         $debts = Debt::latest()
             ->with(['user'])
@@ -24,7 +24,7 @@ class DebtController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : DebtResource
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -38,7 +38,7 @@ class DebtController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id) : DebtResource
     {
         $debt = Debt::with(['user'])->findOrFail($id);
         return new DebtResource($debt);
@@ -47,7 +47,7 @@ class DebtController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id) : DebtResource
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -67,7 +67,7 @@ class DebtController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : SuccessResource
     {
         $debt = Debt::findOrFail($id);
         if($debt->user_id !== auth()->id()) {
@@ -76,8 +76,6 @@ class DebtController extends Controller
                 ->setStatusCode(403);
         }
         $debt->delete();
-        return (new SuccessResource(['message' => 'Debt deleted successfully']))
-            ->response()
-            ->setStatusCode(200);
+        return new SuccessResource(['message' => 'Debt deleted successfully']);
     }
 }

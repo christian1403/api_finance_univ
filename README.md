@@ -7,55 +7,110 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# API Payment Gateway Finance University
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**API Payment Gateway Finance University** adalah RESTful API, platform inovatif yang menghubungkan sistem keuangan universitas dengan berbagai metode pembayaran digital. Proyek ini dibangun dengan Laravel, menyediakan solusi yang aman, skalabel, dan mudah terintegrasi untuk pengelolaan transaksi keuangan akademik.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Features
 
-## Learning Laravel
+- **Integrasi Multi-Payment**: Mendukung berbagai virtual account QRIS, dan bank bank lainnya
+- **Keamanan Berlapis**: Enkripsi end-to-end dan kepatuhan terhadap standar signature payment gateway
+- **Webhook & Notifikasi**: Sistem notifikasi otomatis untuk status pembayaran secara real-time
+- **Pembayaran Rekuren**: Untuk biaya kuliah baik BPP maupun Non BPP
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### System Requirements
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP 8.1 or higher**
+- **Laravel 12.x**
+- **MySQL 8.0+**
+- **Composer 2.x**
 
-## Laravel Sponsors
+## 🚀 Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+# Clone the repository
+git clone https://github.com/christian1403/api_finance_univ.git
 
-### Premium Partners
+# Navigate to the project directory
+cd api_finance_univ
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Composer install
+composer install
 
-## Contributing
+# Copy from env.example into .env
+cp .env.example .env
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Edit your config database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=finance_univ
+DB_USERNAME=root
+DB_PASSWORD=
 
-## Code of Conduct
+# Generate New Key Laravel
+php artisan key:generate
+```
+## 📘 Usage
+Run the migration and seeder
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan migrate:refresh --seed
+```
 
-## Security Vulnerabilities
+Run the project
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan serve
+```
 
-## License
+## 🛠️ How It Works
+
+### Default User Admin
+
+```bash
+admin@admin.com
+admin12345
+```
+
+### Default User
+
+```bash
+user@user.com
+user12345
+```
+
+### Directory Structure
+
+```bash
+api_finance_univ/
+├── app/
+|    ├── Http/
+|    |    ├── Controllers/      # Folder Controller
+|    |    └── Resources/        # Folder Resource
+|    └── Models/                # Folder Models
+├── database/
+|    ├── migrations/            # Folder Migrations
+|    └── seeders/               # Folder Seeders
+└── postman/                    # Folder Collections Postman
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📄 License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+Developed by Kelompok 1 Institut Teknologi Adhi Tama Surabaya © 2025
