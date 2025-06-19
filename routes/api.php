@@ -18,7 +18,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 
-Route::middleware(['auth:sanctum', 'role:superadmin'])->group(function () {
+Route::prefix('v1')->middleware(['auth:sanctum', 'role:superadmin'])->group(function () {
     Route::apiResource('/debts', DebtController::class);
     // Add other routes that require superadmin role here
 });
