@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Http\Resources\LoginResource;
+use App\Http\Resources\ErrorResource;
 class LoginController extends Controller
 {
     /**
@@ -19,14 +20,14 @@ class LoginController extends Controller
         ]);
 
         if(!auth()->attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return (new ErrorResource(['message' => 'Invalid credentials']))
+                ->response()
+                ->setStatusCode(401);
         }
         $user = auth()->user();
-        return response()->json([
-            'message' => 'Login successful',
-            'user' => $user,
-            'token' => $user->createToken('api_token')->plainTextToken,
-        ], 200);
-        //
+
+        return (new LoginResource($user))
+            ->response()
+            ->setStatusCode(200);
     }
 }
