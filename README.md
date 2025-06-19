@@ -62,25 +62,21 @@ php artisan serve
 ## 🛠️ How It Works
 
 ### Default User Admin
+
 ```bash
 admin@admin.com
 admin12345
 ```
 
 ### Default User
+
 ```bash
 user@user.com
 user12345
 ```
 
-### Follow the interactive prompts:
-
-- Enter filename (without extension)
-- Enter kode menu
-- Enter URL
-- Choose component options (Darul Ilmi, PDF, Excel, Datatable Serverside)
-
 ### Directory Structure
+
 ```bash
 api_finance_univ/
 ├── app/
