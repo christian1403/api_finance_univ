@@ -14,7 +14,10 @@ class BillingResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return array_merge(parent::toArray($request), [
+            'request_data' => json_decode($this->request_data, true),
+            'response_data' => json_decode($this->response_data, true),
+        ]);
     }
 
     public function withResponse(Request $request, $response): void
