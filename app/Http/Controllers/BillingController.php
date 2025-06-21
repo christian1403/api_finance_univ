@@ -194,6 +194,21 @@ class BillingController extends Controller
             ]))->response()->setStatusCode(400);
         }
 
+        try {
+            $status = MidtransHelper::getPaymentStatus($billing->order_id);
+            if(!$status || !in_array(@$status->transaction_status, ['paid', 'settlement', 'capture'])) {
+                // If the payment is still pending or expired, we can cancel it
+                MidtransHelper::cancelPayment($billing->order_id);
+            } else {
+                return (new ErrorResource([
+                    'message' => 'This billing record cannot be cancelled as it has already been paid.',
+                    'data' => new BillingResource($billing),
+                ]))->response()->setStatusCode(400);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            Log::error('Failed to cancel payment for billing ID ' . $billing->id . ': ' . $th->getMessage());
+        }
 
         $billing->payment_status = 'cancelled';
         $billing->request_data = null;
@@ -201,13 +216,6 @@ class BillingController extends Controller
         $billing->expired_at = null;
         $billing->save();
 
-        try {
-            MidtransHelper::cancelPayment($billing->order_id);
-            
-        } catch (\Throwable $th) {
-            //throw $th;
-            Log::error('Failed to cancel payment for billing ID ' . $billing->id . ': ' . $th->getMessage());
-        }
         return new SuccessResource([
             'message' => 'Checkout cancelled successfully.',
             'data' => new BillingResource($billing),
