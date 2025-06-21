@@ -15,15 +15,14 @@ class SuccessResource extends JsonResource
     public function toArray(Request $request): array
     {
         $res = [];
-
-        if(isset($this->data)) $res['error'] = $this->data;
+        if(isset($this->resource['data'])) $res['data'] = $this->resource['data'];
         return $res;
     }
 
     public function withResponse(Request $request, $response): void
     {
         $response->setData(array_merge([
-            'status' => false,
+            'status' => true,
             'message' => $this->resource['message'] ?? 'An error occurred',
         ], $response->getData(true)));
     }

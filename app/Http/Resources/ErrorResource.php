@@ -17,6 +17,7 @@ class ErrorResource extends JsonResource
         $res = [];
 
         if(isset($this->data)) $res['error'] = $this->data;
+        if(isset($this->resource['data'])) $res['data'] = $this->resource['data'];
         return $res;
     }
 
