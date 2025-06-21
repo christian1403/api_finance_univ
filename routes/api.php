@@ -30,9 +30,12 @@ Route::prefix('v1')->middleware(['auth:sanctum'])->group(function () {
     Route::prefix('user')->middleware('role:user')->group(function () {
         Route::get('/billings', [BillingController::class, 'userBillings'])->name('user.billings.index');
         Route::get('/billings/{id}', [BillingController::class, 'show'])->name('user.billings.show');
-        Route::post('/billings/checkout/{id}', [BillingController::class, 'userCheckout'])->name('user.billings.checkout');
-        Route::post('/billings/cancel/{id}', [BillingController::class, 'cancelCheckout'])->name('user.billings.cancel');
-        Route::post('/billings/check-status/{id}', [BillingController::class, 'checkPaymentStatus'])->name('user.billings.check-status');
+
+        Route::middleware('midtrans.credentials')->group(function () {
+            Route::post('/billings/checkout/{id}', [BillingController::class, 'userCheckout'])->name('user.billings.checkout');
+            Route::post('/billings/cancel/{id}', [BillingController::class, 'cancelCheckout'])->name('user.billings.cancel');
+            Route::post('/billings/check-status/{id}', [BillingController::class, 'checkPaymentStatus'])->name('user.billings.check-status');
+        });
 
     });
     // Add other routes that require superadmin role here
