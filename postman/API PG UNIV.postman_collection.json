@@ -720,7 +720,7 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "show billing",
+					"name": "show billings",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -757,6 +757,176 @@
 								"v1",
 								"user",
 								"billings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show billing",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/billings/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"billings",
+								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/billings/checkout/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"billings",
+								"checkout",
+								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/billings/cancel/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"billings",
+								"cancel",
+								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/billings/cancel/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"billings",
+								"cancel",
+								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
 							]
 						}
 					},
