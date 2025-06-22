@@ -757,6 +757,13 @@
 								"v1",
 								"user",
 								"billings"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "paid",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -832,7 +839,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{base_url}}/api/v1/user/billings/checkout/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"raw": "{{base_url}}/api/v1/user/billings/checkout/4903681a-7128-4d12-a993-788c32f8c6c4",
 							"host": [
 								"{{base_url}}"
 							],
@@ -842,7 +849,7 @@
 								"user",
 								"billings",
 								"checkout",
-								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+								"4903681a-7128-4d12-a993-788c32f8c6c4"
 							]
 						}
 					},
@@ -874,7 +881,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{base_url}}/api/v1/user/billings/cancel/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"raw": "{{base_url}}/api/v1/user/billings/cancel/cb459150-81a0-4159-afc3-07a57e27933b",
 							"host": [
 								"{{base_url}}"
 							],
@@ -884,7 +891,7 @@
 								"user",
 								"billings",
 								"cancel",
-								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+								"cb459150-81a0-4159-afc3-07a57e27933b"
 							]
 						}
 					},
@@ -916,7 +923,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{base_url}}/api/v1/user/billings/cancel/d7c56365-65fe-4f8d-a5c3-86fa765d1fad",
+							"raw": "{{base_url}}/api/v1/user/billings/check-status/cb459150-81a0-4159-afc3-07a57e27933b",
 							"host": [
 								"{{base_url}}"
 							],
@@ -925,8 +932,8 @@
 								"v1",
 								"user",
 								"billings",
-								"cancel",
-								"d7c56365-65fe-4f8d-a5c3-86fa765d1fad"
+								"check-status",
+								"cb459150-81a0-4159-afc3-07a57e27933b"
 							]
 						}
 					},
