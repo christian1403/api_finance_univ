@@ -27,8 +27,14 @@ class DebtSeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'user_id' => $superadmin->id,
-                'name' => 'Non BPP',
-                'description' => 'biaya pendidikan selain Biaya Penyelenggaraan Pendidikan (BPP)',
+                'name' => 'Uang Praktikum',
+                'description' => 'biaya praktikum',
+            ],
+            [
+                'id' => Str::uuid(),
+                'user_id' => $superadmin->id,
+                'name' => 'Uang KKN',
+                'description' => 'biaya Kuliah Kerja Nyata (KKN)',
             ],
         ];
 

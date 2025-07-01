@@ -19,6 +19,11 @@ class BillingSeeder extends Seeder
         $users = User::role('user')->get();
         $debts = Debt::all();
 
+        $amount = [
+            'BPP' => 1000000, // Example amount for BPP
+            'Uang Praktikum' => 500000, // Example amount for Praktikum
+            'Uang KKN' => 300000, // Example amount for KKN
+        ];
         foreach ($users as $user) {
             foreach ($debts as $debt) {
                 // Create a billing record for each user and their associated debt
@@ -27,9 +32,9 @@ class BillingSeeder extends Seeder
                     'debt_id' => $debt->id,
                     'month' => now()->month,
                     'year' => now()->year,
-                    'amount' => 1000000, // Example amount, adjust as needed
+                    'amount' => $amount[$debt->name] ?? 0,
                     'status' => 'unpaid',
-                    'description' => 'Billing for ' . $user->name,
+                    'description' => $debt->name . ' ' . $user->name,
                     'user_id' => $user->id,
                     'request_data' => null,
                     'response_data' => null,
