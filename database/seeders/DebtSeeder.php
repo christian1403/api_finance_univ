@@ -28,13 +28,13 @@ class DebtSeeder extends Seeder
                 'id' => Str::uuid(),
                 'user_id' => $superadmin->id,
                 'name' => 'Uang Praktikum',
-                'description' => 'biaya praktikum',
+                'description' => 'Biaya Praktikum',
             ],
             [
                 'id' => Str::uuid(),
                 'user_id' => $superadmin->id,
                 'name' => 'Uang KKN',
-                'description' => 'biaya Kuliah Kerja Nyata (KKN)',
+                'description' => 'Biaya Kuliah Kerja Nyata (KKN)',
             ],
         ];
 

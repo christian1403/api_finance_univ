@@ -26,6 +26,12 @@ class BillingSeeder extends Seeder
         ];
         foreach ($users as $user) {
             foreach ($debts as $debt) {
+                $debtDescription = "";
+                if($debt->name === 'BPP') {
+                    $debtDescription = $debt->name . ' Juli ' . now()->format('Y');
+                } else {
+                    $debtDescription = $debt->name . ' ' . now()->format('Y');
+                }
                 // Create a billing record for each user and their associated debt
                 Billing::create([
                     'id' => Str::uuid(),
@@ -34,7 +40,7 @@ class BillingSeeder extends Seeder
                     'year' => now()->year,
                     'amount' => $amount[$debt->name] ?? 0,
                     'status' => 'unpaid',
-                    'description' => $debt->name . ' ' . $user->name,
+                    'description' => $debtDescription,
                     'user_id' => $user->id,
                     'request_data' => null,
                     'response_data' => null,
